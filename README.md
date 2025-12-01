@@ -6,8 +6,7 @@ badges:
   - "Vertex AI: Embeddings"
 
 description: |
-  This repository contains the complete implementation of my GHCI 2025 Hackathon – Round 2
-  project under the theme “Automated AI-Based Financial Transaction Categorisation.”
+  This repository contains the complete implementation “Automated AI-Based Financial Transaction Categorisation.”
   
   It is a full, production-inspired ML pipeline built on Google Cloud Platform (GCP),
   using Airflow, BigQuery, Vertex AI embeddings, BigQuery ML, and GCS. The system 
@@ -132,12 +131,9 @@ architecture_diagrams:
 conclusion: |
   This project delivers a complete, scalable, production-grade financial transaction
   categorisation pipeline on GCP. It integrates ETL, ML embeddings, DNN classification,
-  orchestration via Airflow, and taxonomy-driven customisation. It fully satisfies
-  GHCI 2025 hackathon requirements.
-
+  orchestration via Airflow, and taxonomy-driven customisation. l
 contact:
   name: "Mohammed Saqlain"
-  location: "Mysuru, Karnataka, India"
   github: "https://github.com/MdSaqlain02"
   linkedin: "https://www.linkedin.com/in/mohammedsaqlain-dev"
   email: "saqlainmohammed005@gmail.com"
