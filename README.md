@@ -1,141 +1,33 @@
-title: "AI-Powered Financial Transaction Categorisation System (GCP)"
-badges:
-  - "Google Cloud: Data Engineering"
-  - "BigQuery: ML Pipelines"
-  - "Apache Airflow: Orchestration"
-  - "Vertex AI: Embeddings"
+To make this easy for you,
+I have formatted the README.md content into a single block that you can copy and paste.If you are using a terminal, you can run this command to create the file instantly, or just copy the text between the dashed lines and paste it into the GitHub editor.
+Option 1: Copy-Paste for GitHub EditorCopy everything below this line and paste it into your README.md 
 
-description: |
-  This repository contains the complete implementation “Automated AI-Based Financial Transaction Categorisation.”
-  
-  It is a full, production-inspired ML pipeline built on Google Cloud Platform (GCP),
-  using Airflow, BigQuery, Vertex AI embeddings, BigQuery ML, and GCS. The system 
-  processes noisy transaction descriptions and achieves an F1 score of 0.9454.
+file:AI-Powered Financial Transaction Categorization (GCP)Production-Grade Data Pipeline & MLOps Infrastructure
 
-architecture_image: "./screenshots/architecture_diagram_1.png"
+📌 Project OverviewThis repository implements a scalable, end-to-end cloud pipeline designed to categorize noisy, real-world financial transactions.
+Built on Google Cloud Platform (GCP), the system manages the entire lifecycle of data—from ingestion and ETL to embedding generation and automated DNN classification—achieving an F1 score of 0.9454.Operational Focus: The system is built with a focus on idempotency, automated retries, and monitoring, ensuring data reliability across enterprise cloud environments.
 
-pipeline_workflow: |
-  CSV uploaded to GCS
-          ↓
-  Airflow detects new file
-          ↓
-  Raw data ingested into BigQuery
-          ↓
-  ETL transforms & cleans data
-          ↓
-  Vertex AI creates 768-d embeddings
-          ↓
-  BigQuery ML trains DNN classifier
-          ↓
-  Predictions + confidence generated
-          ↓
-  Reporting view merges categories
-          ↓
-  Admin updates taxonomy.json without code changes
+🏗 System ArchitectureThe pipeline follows a modern ELT (Extract, Load, Transform) and MLOps pattern, orchestrated via Cloud Composer.
+The Workflow:Ingestion: CSV data is uploaded to Cloud Storage (GCS).Orchestration: Apache Airflow sensors detect the file and trigger the BigQuery ingestion.
+Transformation: SQL-based ETL cleans and normalizes noisy merchant descriptions.
+Embedding Layer: Vertex AI (text-embedding-004) generates 768-dimensional vectors.
+Classification: A BigQuery ML DNN Classifier predicts categories with confidence scores.
+Governance: A taxonomy.json configuration allows updates without redeploying code.
 
-tech_stack:
-  gcp_services:
-    - BigQuery
-    - Cloud Storage
-    - Cloud Composer (Airflow)
-    - Vertex AI (text-embedding-004)
-    - IAM
-  machine_learning:
-    - BigQuery ML DNN Classifier
-    - Vertex AI Embeddings
-    - Confidence Scoring Pipeline
-  tools_languages:
-    - Python
-    - SQL
-    - Git
-    - Jupyter Notebook
+🛠 Tech Stack CategoryTools & Services Cloud ProviderGoogle Cloud Platform (GCP)
+Orchestration Apache Airflow (Cloud Composer) Data Warehouse BigQuery (SQL) Machine LearningVertex AI, BigQuery MLLanguagePython (Pandas, GCP SDKs), SQLDevOpsGit, Docker (Basics)
+🚀 Monitoring & Reliability (Cloud Ops Focus)Designed with a Monitoring Engineer's mindset, this project incorporates production-first features:Idempotency: The pipeline ensures that re-running tasks does not result in duplicate data entries.Confidence Thresholds: Predictions below a specific score are flagged for review, preventing silent data corruption.Robust Logging: Every stage of the Airflow DAG is logged for rapid root-cause analysis (RCA) during failures.Scalability: Built using serverless GCP components to handle fluctuating data volumes automatically.
 
-repository_structure: |
-  transaction-categorization-gcp/
-  ├── README.md
-  ├── data/
-  │   └── noisy_2000_transactions_.csv
-  ├── config/
-  │   └── taxonomy.json
-  ├── airflow_dag/
-  │   └── backbase_transactions_categorization_final.py
-  ├── screenshots/
-  │   ├── architecture_diagram_1.png
-  │   ├── architecture_diagram_2.png
-  │   ├── model_metrics.png
-  │   └── confusion_matrix.png
-  └── demo/
-      └── demo_video_link.txt
+📊 Performance Metrics
+F1 Score: 0.9454
+Precision: 0.9453
+Recall: 0.9477
+AUC: 0.9665
 
-dataset:
-  path: "data/noisy_2000_transactions_.csv"
-  details:
-    - "2000+ noisy real-world transactions"
-    - "Mixed-case, typos, abbreviations"
-    - "~50 unlabeled rows for prediction testing"
-
-machine_learning_components:
-  vertex_ai_embedding_model: "text-embedding-004"
-  embedding_dimension: 768
-  bigquery_ml_dnn_classifier:
-    architecture:
-      - 128
-      - 64
-      - 32
-    dropout: 0.2
-    auto_class_weighting: true
-    early_stopping: true
-  output_fields:
-    - predicted_category
-    - confidence_score
-    - final_category
-
-airflow_dag:
-  file_path: "airflow_dag/backbase_transactions_categorization_final.py"
-  workflow_steps:
-    - Dataset & table creation
-    - CSV ingestion to BigQuery
-    - ETL transformation
-    - Vertex AI embedding generation
-    - BigQuery ML training
-    - Batch predictions
-    - Confidence scoring
-    - Reporting view creation
-  features:
-    - Idempotent
-    - Incremental
-    - Production-ready
-    - Taxonomy-driven
-
-taxonomy_configuration:
-  path: "config/taxonomy.json"
-  purpose: "Admin-editable merchant-category mapping (no code changes required)."
-
-
-model_performance:
-  f1_score: 0.9454
-  precision: 0.9453
-  recall: 0.9477
-  auc: 0.9665
-  screenshots:
-    - "screenshots/model_metrics.png"
-    - "screenshots/confusion_matrix.png"
-
-demo:
-  link_path: "demo/demo_video_link.txt"
-
-architecture_diagrams:
-  - "screenshots/architecture_diagram_1.png"
-  - "screenshots/architecture_diagram_2.png"
-
-conclusion: |
-  This project delivers a complete, scalable, production-grade financial transaction
-  categorisation pipeline on GCP. It integrates ETL, ML embeddings, DNN classification,
-  orchestration via Airflow, and taxonomy-driven customisation. l
-contact:
-  name: "Mohammed Saqlain"
-  github: "https://github.com/MdSaqlain02"
-  linkedin: "https://www.linkedin.com/in/mohammedsaqlain-dev"
-  email: "saqlainmohammed005@gmail.com"
-
-quote: "Always learning, always building."
+📂 Repository StructureBashtransaction-categorization-gcp/
+├── airflow_dag/      # Production DAGs for workflow orchestration
+├── config/           # Taxonomy & Environment configurations (JSON)
+├── data/             # Sample datasets (Noisy Transactions)
+├── screenshots/      # Architecture & Performance visualizers
+└── README.md
+🤝 Contact     Mohammed Saqlain Aspiring Cloud & Monitoring Engineer LinkedIn | GitHub | Email
